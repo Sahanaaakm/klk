@@ -1,0 +1,261 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InterestSphere</title>
+    <style>
+        /* Home Page and Login Page Styles (Merged) */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e60023;
+        }
+
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        .auth-buttons button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .auth-buttons .login {
+            background-color: white;
+            color: #e60023;
+            border: 1px solid #e60023;
+        }
+
+        .auth-buttons .signup {
+            background-color: #e60023;
+            color: white;
+        }
+
+        .main {
+            text-align: center;
+            margin: 50px 0;
+        }
+
+        .welcome-section h1 {
+            font-size: 48px;
+            color: #333;
+        }
+
+        .dots {
+            margin-top: 10px;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #e60023;
+        }
+
+        .scroll-down span {
+            display: block;
+            margin-top: 20px;
+            font-size: 24px;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .image-preview {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .image-preview img {
+            width: 150px;
+            height: auto;
+            margin: 0 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            display: flex;
+            justify-content: center;
+            padding: 10px 20px;
+            background-color: white;
+            border-top: 1px solid #ddd;
+        }
+
+        .footer a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Login/Signup Form Styles */
+        .overlay {
+            padding: 20px;
+        }
+
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .hidden {
+            display: none;
+            opacity: 0;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #606770;
+            margin: 10px 0;
+        }
+
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .button {
+            background: #e60023;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background: #cc001f;
+        }
+
+        .button.google {
+            background: #4285F4;
+            margin-top: 10px;
+        }
+
+        .button.google:hover {
+            background: #357ae8;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">InterestSphere</div>
+        <nav class="nav">
+            <a href="#">Today</a>
+            <a href="#">Watch</a>
+            <a href="#">Explore</a>
+        </nav>
+        <div class="auth-buttons">
+            <button class="login" id="show-login">Log in</button>
+            <button class="signup" id="show-signup">Sign up</button>
+        </div>
+    </header>
+
+    <main class="main">
+        <section class="welcome-section">
+            <h1>Get your next</h1>
+            <div class="dots">
+                <span class="dot"></span>
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+            <div class="scroll-down">
+                <span>⬇</span>
+            </div>
+        </section>
+        <section id="forms" class="hidden">
+            <div class="form-container">
+                <div id="signup-form" class="form">
+                    <h2>InterestSphere Welcome's you</h2>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Create a password" />
+                    <input type="date" placeholder="Birthdate" />
+                    <button class="button">Continue</button>
+                </div>
+                <div id="login-form" class="form hidden">
+                    <h2>InterestSphere Welcome's you</h2>
+                    <input type="email" placeholder="Email" />
+                    <input type="password" placeholder="Password" />
+                    <button class="button">Log in</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="#">About</a>
+        <a href="#">Business</a>
+        <a href="#">Blog</a>
+    </footer>
+
+    <script>
+        document.getElementById('show-login').addEventListener('click', () => {
+            document.getElementById('forms').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-form').classList.remove('hidden');
+        });
+
+        document.getElementById('show-signup').addEventListener('click', () => {
+            document.getElementById('forms').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-form').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
